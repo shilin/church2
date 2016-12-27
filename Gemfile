@@ -58,8 +58,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'capybara-webkit'
-  gem 'database-cleaner'
-  gem 'html2slim'
+  gem 'database_cleaner'
 end
 
 group :development do
