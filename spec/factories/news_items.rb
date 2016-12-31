@@ -1,12 +1,35 @@
 FactoryGirl.define do
-  factory :news_item do
-    title "MyString"
-    body "MyText"
-    body_preview "MyText"
-    scope 1
-    unpin_date "2016-12-30"
-    image_url "MyString"
-    preview_image_url "MyString"
+  sequence :title do |n|
+    "MyTitle#{n}"
+  end
+
+  sequence :body do |n|
+    "MyBody#{n}"
+  end
+
+  sequence :body_preview do |n|
+    "MyBodyPreview#{n}"
+  end
+
+  factory :global_news_item, class: NewsItem do
+    title
+    body
+    body_preview
+    scope 'global'
+    unpin_date '2016-12-30'
+    image_url 'MyImageUrl'
+    preview_image_url 'MyPreviewImageUrl'
+    approved false
+  end
+
+  factory :local_news_item, class: NewsItem do
+    title
+    body
+    body_preview
+    scope 'local'
+    unpin_date '2016-12-30'
+    image_url 'MyImageUrl'
+    preview_image_url 'MyPreviewImageUrl'
     approved false
   end
 end

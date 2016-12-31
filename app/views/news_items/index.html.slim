@@ -1,1 +1,9 @@
-= render @news_items
+div#global-news
+  h3
+    |Новости
+  = render @news_items.global
+
+div#local-news
+  h3
+    |Новости приходов
+  = render @news_items.local
