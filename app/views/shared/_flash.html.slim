@@ -1,0 +1,4 @@
+div#flash.container
+  - flash.each do |type, message|
+    div.fade.in.alert 
+      = message

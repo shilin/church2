@@ -10,6 +10,6 @@ class NewsItemsController < ApplicationController
   private
 
   def set_news_items
-    @news_items = NewsItem.global.limit(3).or(NewsItem.local.limit(3))
+    @news_items = NewsItem.global.limit(3).or(NewsItem.local.limit(3)).merge(:approved)
   end
 end

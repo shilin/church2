@@ -19,7 +19,7 @@ FactoryGirl.define do
     unpin_date '2016-12-30'
     image_url 'MyImageUrl'
     preview_image_url 'MyPreviewImageUrl'
-    approved false
+    approved true
   end
 
   factory :local_news_item, class: NewsItem do
@@ -30,6 +30,6 @@ FactoryGirl.define do
     unpin_date '2016-12-30'
     image_url 'MyImageUrl'
     preview_image_url 'MyPreviewImageUrl'
-    approved false
+    approved true
   end
 end

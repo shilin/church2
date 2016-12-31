@@ -2,6 +2,8 @@ require_relative '../rails_helper'
 
 Capybara.javascript_driver = :webkit
 
+Capybara::Webkit.configure(&:block_unknown_urls)
+
 RSpec.configure do |config|
   config.use_transactional_fixtures = false
 
