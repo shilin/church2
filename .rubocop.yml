@@ -1,0 +1,32 @@
+inherit_from: .rubocop_todo.yml
+
+AllCops:
+
+  TargetRubyVersion: 2.3
+
+  Include:
+    - Rakefile
+    - config.ru
+
+  Exclude:
+    - db/schema.rb
+    - 'bin/*'
+    - spec/spec_helper.rb
+    - 'db/migrate/*'
+    - config/application.rb
+    - 'public/*'
+    - 'public/**/*'
+    - 'vendor/**/*'
+    - 'spec/fixtures/**/*'
+    - 'tmp/**/*'
+
+Style/Encoding:
+  EnforcedStyle: when_needed
+  Enabled: true
+
+Style/FrozenStringLiteralComment:
+  EnforcedStyle: always
+
+Documentation:
+  Enabled: false
+
