@@ -10,9 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20161230132515) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "news_items", force: :cascade do |t|
+    t.string   "title"
+    t.text     "body"
+    t.text     "body_preview"
+    t.date     "unpin_date"
+    t.string   "image_url"
+    t.string   "preview_image_url"
+    t.boolean  "approved",          default: false
+    t.integer  "scope",             default: 0
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.index ["scope"], name: "index_news_items_on_scope", using: :btree
+  end
 
 end
