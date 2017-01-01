@@ -1,5 +1,5 @@
 class NewsItem < ApplicationRecord
-  enum scope: ['global', 'local']
+  include Zoomable
 
   scope :approved, -> { where(approved: true) }
 

@@ -15,7 +15,7 @@ FactoryGirl.define do
     title
     body
     body_preview
-    scope 'global'
+    zoom 'global'
     unpin_date '2016-12-30'
     image_url 'MyImageUrl'
     preview_image_url 'MyPreviewImageUrl'
@@ -26,7 +26,7 @@ FactoryGirl.define do
     title
     body
     body_preview
-    scope 'local'
+    zoom 'local'
     unpin_date '2016-12-30'
     image_url 'MyImageUrl'
     preview_image_url 'MyPreviewImageUrl'
