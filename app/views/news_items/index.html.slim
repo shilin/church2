@@ -1,9 +1,9 @@
 div#global-news
   h3
     |Новости
-  = render @news_items.global
+  = render @news_items_hash[:global]
 
 div#local-news
   h3
     |Новости приходов
-  = render @news_items.local
+  = render @news_items_hash[:local]
