@@ -1,3 +1,5 @@
 div.news-item
+  div.locations
+    = render partial: 'locations/location', collection: news_item.locations
   p=news_item.title
   p=news_item.body_preview

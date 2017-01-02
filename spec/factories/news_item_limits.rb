@@ -1,16 +1,16 @@
 FactoryGirl.define do
   factory :zoom_limit do
-    zoom 1
-    limit 1
+    zoom 'global'
+    limit ZoomLimit::FALLBACK_ZOOM_LIMIT
   end
 
   factory :global_zoom_limit, class: ZoomLimit do
     zoom 'global'
-    limit 0
+    limit ZoomLimit::FALLBACK_ZOOM_LIMIT
   end
 
   factory :local_zoom_limit, class: ZoomLimit do
     zoom 'local'
-    limit 0
+    limit ZoomLimit::FALLBACK_ZOOM_LIMIT
   end
 end
