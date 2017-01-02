@@ -5,4 +5,9 @@ module FeaturesMacros
     fill_in 'Password', with: user.password
     click_on 'Log in'
   end
+
+  def generate_zoom_limits
+    create(:global_zoom_limit)
+    create(:local_zoom_limit)
+  end
 end

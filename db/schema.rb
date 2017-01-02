@@ -10,10 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170102060558) do
+ActiveRecord::Schema.define(version: 20170102143145) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "locatings", force: :cascade do |t|
+    t.integer  "location_id"
+    t.string   "locatable_type"
+    t.integer  "locatable_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["locatable_type", "locatable_id", "location_id"], name: "by_locatable_location", unique: true, using: :btree
+    t.index ["locatable_type", "locatable_id"], name: "index_locatings_on_locatable_type_and_locatable_id", using: :btree
+    t.index ["location_id"], name: "index_locatings_on_location_id", using: :btree
+  end
+
+  create_table "locations", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_locations_on_name", unique: true, using: :btree
+  end
 
   create_table "news_items", force: :cascade do |t|
     t.string   "title"
@@ -52,6 +70,8 @@ ActiveRecord::Schema.define(version: 20170102060558) do
     t.integer  "limit"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.index ["zoom"], name: "index_zoom_limits_on_zoom", unique: true, using: :btree
   end
 
+  add_foreign_key "locatings", "locations"
 end

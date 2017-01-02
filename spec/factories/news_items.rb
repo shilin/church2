@@ -11,6 +11,16 @@ FactoryGirl.define do
     "MyBodyPreview#{n}"
   end
 
+  factory :news_item do
+    title
+    body
+    body_preview
+    unpin_date '2016-12-30'
+    image_url 'MyImageUrl'
+    preview_image_url 'MyPreviewImageUrl'
+    approved true
+  end
+
   factory :global_news_item, class: NewsItem do
     title
     body
