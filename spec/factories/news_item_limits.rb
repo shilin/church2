@@ -1,15 +1,15 @@
 FactoryGirl.define do
-  factory :news_item_limit do
+  factory :zoom_limit do
     zoom 1
     limit 1
   end
 
-  factory :global_news_item_limit, class: NewsItemLimit do
+  factory :global_zoom_limit, class: ZoomLimit do
     zoom 'global'
     limit 0
   end
 
-  factory :local_news_item_limit, class: NewsItemLimit do
+  factory :local_zoom_limit, class: ZoomLimit do
     zoom 'local'
     limit 0
   end

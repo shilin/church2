@@ -12,33 +12,33 @@ feature 'anyone sees exact number of news on front page', '
   let!(:second_newest_global_news_item) { create(:global_news_item, body_preview: 'MySecondNewest') }
   let!(:newest_global_news_item) { create(:global_news_item, body_preview: 'MyFirstNewest') }
 
-  let(:global_news_item_limit) { create(:global_news_item_limit, limit: 3) }
-  let(:local_news_item_limit) { create(:local_news_item_limit, limit: 2) }
+  let(:global_zoom_limit) { create(:global_zoom_limit, limit: 3) }
+  let(:local_zoom_limit) { create(:local_zoom_limit, limit: 2) }
 
   scenario 'Visitor see fallback amount of ordered latest first news' do
     visit root_path
 
     within '#global-news' do
-      expect(page).to have_selector('.news-item', count: NewsItemLimit::FALLBACK_ZOOM_LIMIT)
+      expect(page).to have_selector('.news-item', count: ZoomLimit::FALLBACK_ZOOM_LIMIT)
     end
 
     within '#local-news' do
-      expect(page).to have_selector('.news-item', count: NewsItemLimit::FALLBACK_ZOOM_LIMIT)
+      expect(page).to have_selector('.news-item', count: ZoomLimit::FALLBACK_ZOOM_LIMIT)
     end
   end
 
   scenario 'Visitor see sound amount of ordered latest first news' do
-    global_news_item_limit
-    local_news_item_limit
+    global_zoom_limit
+    local_zoom_limit
 
     visit root_path
 
     within '#global-news' do
-      expect(page).to have_selector('.news-item', count: global_news_item_limit.limit)
+      expect(page).to have_selector('.news-item', count: global_zoom_limit.limit)
     end
 
     within '#local-news' do
-      expect(page).to have_selector('.news-item', count: local_news_item_limit.limit)
+      expect(page).to have_selector('.news-item', count: local_zoom_limit.limit)
     end
 
     within '#global-news' do

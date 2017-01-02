@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe NewsItemLimit, type: :model do
+RSpec.describe ZoomLimit, type: :model do
   it_behaves_like 'zoomable'
 
   it { should validate_presence_of :limit }

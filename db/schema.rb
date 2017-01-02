@@ -10,17 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170101134528) do
+ActiveRecord::Schema.define(version: 20170102060558) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "news_item_limits", force: :cascade do |t|
-    t.integer  "zoom",       default: 0
-    t.integer  "limit"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-  end
 
   create_table "news_items", force: :cascade do |t|
     t.string   "title"
@@ -52,6 +45,13 @@ ActiveRecord::Schema.define(version: 20170101134528) do
     t.datetime "updated_at",                             null: false
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  end
+
+  create_table "zoom_limits", force: :cascade do |t|
+    t.integer  "zoom",       default: 0
+    t.integer  "limit"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
 end

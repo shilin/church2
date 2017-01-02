@@ -10,9 +10,7 @@ class NewsItemsController < ApplicationController
   private
 
   def set_news_items
-    @news_items_hash = { global: NewsItem.limited_by_zoom(:global)
-                                         .approved.newest_first,
-                         local: NewsItem.limited_by_zoom(:local)
-                                        .approved.newest_first }
+    @news_items_hash = { global: NewsItem.global_list,
+                         local: NewsItem.local_list }
   end
 end

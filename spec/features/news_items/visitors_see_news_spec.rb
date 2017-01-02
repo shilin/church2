@@ -7,8 +7,8 @@ feature 'anyone sees news on front page', '
   I want to be able to see news
 ' do
 
-  let!(:global_news_item_limit) { create(:global_news_item_limit, limit: 3) }
-  let!(:local_news_item_limit) { create(:local_news_item_limit, limit: 2) }
+  let!(:global_zoom_limit) { create(:global_zoom_limit, limit: 3) }
+  let!(:local_zoom_limit) { create(:local_zoom_limit, limit: 2) }
 
   let!(:global_news_item_list) { create_list(:global_news_item, 4) }
   let!(:local_news_item_list) { create_list(:local_news_item, 4) }
