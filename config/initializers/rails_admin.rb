@@ -38,6 +38,8 @@ RailsAdmin.config do |config|
     end
   end
 
+  config.excluded_models << 'Locating'
+
   config.actions do
     dashboard                     # mandatory
     index                         # mandatory
