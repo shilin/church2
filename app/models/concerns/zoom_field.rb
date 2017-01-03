@@ -1,8 +1,7 @@
-module Zoomable
+module ZoomField
   extend ActiveSupport::Concern
 
   ZOOMS = [:global, :local].freeze
-  FALLBACK_ZOOM_LIMIT = 3
 
   included do
     enum zoom: ZOOMS

@@ -1,5 +1,7 @@
 class ZoomLimit < ApplicationRecord
-  include Zoomable
+  FALLBACK_ZOOM_LIMIT = 3
+
+  include ZoomField
 
   validates :limit, presence: true
   validates :limit, numericality: { only_integer: true }
@@ -7,7 +9,7 @@ class ZoomLimit < ApplicationRecord
 
   validates :zoom, uniqueness: { case_sensitive: false }
 
-  def self.limit(zoom)
+  def self.zoom_limit(zoom)
     find_by(zoom: zoom).try(:limit) || FALLBACK_ZOOM_LIMIT
   end
 end

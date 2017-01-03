@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe ZoomLimit, type: :model do
-  it_behaves_like 'zoomable'
+  it_behaves_like 'zoom_field'
 
   it { should validate_presence_of :limit }
 
