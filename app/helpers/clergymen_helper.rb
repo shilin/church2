@@ -1,0 +1,2 @@
+module ClergymenHelper
+end

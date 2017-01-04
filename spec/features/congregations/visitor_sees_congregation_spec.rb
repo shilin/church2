@@ -8,8 +8,8 @@ feature 'visitor can see congregation', '
 
   let(:location) { create(:location) }
   let!(:congregation) { create(:congregation, location: location) }
-  let!(:geo_address) { create(:geo_address, name: 'MyGeoAddress') }
-  let!(:postal_address) { create(:postal_address, name: 'MyPostalAddress') }
+  let!(:geo_address) { create(:geo_address) }
+  let!(:postal_address) { create(:postal_address) }
 
   before { congregation.addresses <<  [geo_address, postal_address] }
 
@@ -25,6 +25,5 @@ feature 'visitor can see congregation', '
     within('.congregation-postal-address') do
       expect(page).to have_content('MyPostalAddress')
     end
-    expect(page).to have_content('MyPostalAddress')
   end
 end

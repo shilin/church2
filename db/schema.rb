@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170104121406) do
+ActiveRecord::Schema.define(version: 20170104195528) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,23 @@ ActiveRecord::Schema.define(version: 20170104121406) do
     t.index ["address_id"], name: "index_addressings_on_address_id", using: :btree
     t.index ["addressable_type", "addressable_id", "address_id"], name: "by_addressable_address", unique: true, using: :btree
     t.index ["addressable_type", "addressable_id"], name: "index_addressings_on_addressable_type_and_addressable_id", using: :btree
+  end
+
+  create_table "clergymen", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "middle_name"
+    t.string   "last_name"
+    t.integer  "rank"
+    t.date     "birth"
+    t.date     "engagement"
+    t.date     "wedding"
+    t.date     "baptism"
+    t.date     "confirmation"
+    t.date     "deacon_ordination"
+    t.date     "pastor_ordination"
+    t.date     "bishop_installation"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
   end
 
   create_table "congregations", force: :cascade do |t|
