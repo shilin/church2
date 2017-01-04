@@ -1,3 +1,6 @@
 p.congregation-name=@congregation.name
 p.congregation-about=@congregation.about
+p.congregation-location
+  - if location = @congregation.location
+    = render location
 p=@congregation.schedule

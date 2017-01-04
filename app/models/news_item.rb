@@ -2,9 +2,6 @@ class NewsItem < ApplicationRecord
   include ZoomField
   include Locatable
 
-  has_many :locatings, as: :locatable, dependent: :destroy
-  has_many :locations, through: :locatings
-
   scope :approved, -> { where(approved: true) }
   scope :newest_first, -> { order(created_at: 'DESC') }
 

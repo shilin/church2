@@ -6,12 +6,13 @@ feature 'visitor can see ordered congregations', '
   I want to be able to get ordered info about congregations
 ' do
 
-  let!(:congregations) { create_list(:congregation, 2) }
+  let!(:congregation1) { create(:congregation, name: 'Moscow') }
+  let!(:congregation2) { create(:congregation, name: 'NY') }
 
   scenario 'guest visits congregation page and see ordered list of them' do
     visit congregations_path
 
-    expect(all('.congregation-name')[0]).to have_content('MyCongregationName2')
-    expect(all('.congregation-name')[1]).to have_content('MyCongregationName1')
+    expect(all('.congregation-name')[0]).to have_content('NY')
+    expect(all('.congregation-name')[1]).to have_content('Moscow')
   end
 end

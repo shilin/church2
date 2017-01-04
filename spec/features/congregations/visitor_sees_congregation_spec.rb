@@ -6,11 +6,13 @@ feature 'visitor can see congregation', '
   I want to be able to get info about congregation
 ' do
 
-  let(:congregation) { create(:congregation) }
+  let(:location) { create(:location) }
+  let(:congregation) { create(:congregation, location: location) }
 
-  scenario 'guest visits congregation page and see ordered list of them' do
+  scenario 'guest visits congregation page and see its content' do
     visit congregation_path(congregation)
 
     expect(page).to have_content('MyCongregationName1')
+    expect(page).to have_content('MyLocation1')
   end
 end

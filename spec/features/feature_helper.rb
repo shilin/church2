@@ -9,10 +9,6 @@ RSpec.configure do |config|
 
   config.include FeaturesMacros, type: :feature
 
-  config.before(:all) do
-    DatabaseCleaner.clean_with(:truncation)
-  end
-
   config.before(:each) do
     DatabaseCleaner.strategy = :truncation
   end
