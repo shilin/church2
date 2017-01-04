@@ -10,10 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170103060057) do
+ActiveRecord::Schema.define(version: 20170104121406) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "addresses", force: :cascade do |t|
+    t.string   "name"
+    t.text     "body"
+    t.boolean  "postal",     default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.boolean  "geo",        default: false
+    t.index ["name"], name: "index_addresses_on_name", unique: true, using: :btree
+  end
+
+  create_table "addressings", force: :cascade do |t|
+    t.string   "addressable_type"
+    t.integer  "addressable_id"
+    t.integer  "address_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["address_id"], name: "index_addressings_on_address_id", using: :btree
+    t.index ["addressable_type", "addressable_id", "address_id"], name: "by_addressable_address", unique: true, using: :btree
+    t.index ["addressable_type", "addressable_id"], name: "index_addressings_on_addressable_type_and_addressable_id", using: :btree
+  end
 
   create_table "congregations", force: :cascade do |t|
     t.string   "name"
@@ -81,5 +102,6 @@ ActiveRecord::Schema.define(version: 20170103060057) do
     t.index ["zoom"], name: "index_zoom_limits_on_zoom", unique: true, using: :btree
   end
 
+  add_foreign_key "addressings", "addresses"
   add_foreign_key "locatings", "locations"
 end

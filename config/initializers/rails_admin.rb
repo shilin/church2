@@ -39,6 +39,7 @@ RailsAdmin.config do |config|
   end
 
   config.excluded_models << 'Locating'
+  config.excluded_models << 'Addressing'
 
   config.actions do
     dashboard                     # mandatory

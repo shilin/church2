@@ -3,4 +3,10 @@ p.congregation-about=@congregation.about
 p.congregation-location
   - if location = @congregation.location
     = render location
+div.congregation-geo-address
+  = render @congregation.addresses.geo
+
+div.congregation-postal-address
+  = render @congregation.addresses.postal
+
 p=@congregation.schedule
