@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170104195528) do
+ActiveRecord::Schema.define(version: 20170105065057) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -93,6 +93,26 @@ ActiveRecord::Schema.define(version: 20170104195528) do
     t.index ["zoom"], name: "index_news_items_on_zoom", using: :btree
   end
 
+  create_table "phones", force: :cascade do |t|
+    t.string   "description"
+    t.boolean  "for_public"
+    t.integer  "phone_type"
+    t.string   "number"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "phonings", force: :cascade do |t|
+    t.string   "phonable_type"
+    t.integer  "phonable_id"
+    t.integer  "phone_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["phonable_id", "phonable_type", "phone_id"], name: "by_phonable_phone", unique: true, using: :btree
+    t.index ["phonable_type", "phonable_id"], name: "index_phonings_on_phonable_type_and_phonable_id", using: :btree
+    t.index ["phone_id"], name: "index_phonings_on_phone_id", using: :btree
+  end
+
   create_table "users", force: :cascade do |t|
     t.boolean  "admin",                  default: false, null: false
     t.string   "email",                  default: "",    null: false
@@ -121,4 +141,5 @@ ActiveRecord::Schema.define(version: 20170104195528) do
 
   add_foreign_key "addressings", "addresses"
   add_foreign_key "locatings", "locations"
+  add_foreign_key "phonings", "phones"
 end

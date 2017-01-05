@@ -1,12 +1,39 @@
-p.congregation-name=@congregation.name
-p.congregation-about=@congregation.about
-p.congregation-location
+div.congregation-name
+  = @congregation.name
+div.congregation-about
+  = @congregation.about
+div.congregation-location
   - if location = @congregation.location
     = render location
-div.congregation-geo-address
-  = render @congregation.addresses.geo
 
-div.congregation-postal-address
-  = render @congregation.addresses.postal
+div.congregation-addresses
+  - unless (geos = @congregation.addresses.geo).empty?
+    div.congregation-geo-address
+      |Адрес
+      = render @congregation.addresses.geo
 
-p=@congregation.schedule
+  - unless (postal = @congregation.addresses.postal).empty?
+    div.congregation-postal-address
+      |Почтовый адрес
+      = render @congregation.addresses.postal
+
+- unless @congregation.phones.for_public.empty?
+  div.congregation-phones
+    |Телефоны:
+    - unless (landlines = @congregation.phones.for_public.landline).empty?
+      div.congregation-landline
+        |Городск.: 
+        = render landlines
+
+    - unless (mobiles = @congregation.phones.for_public.mobile).empty?
+      div.congregation-mobile
+        |Моб.: 
+        = render mobiles
+
+    - unless (faxes = @congregation.phones.for_public.fax).empty?
+      div.congregation-fax
+        |Факс: 
+        = render faxes
+
+div.congregation-schedule
+  = @congregation.schedule

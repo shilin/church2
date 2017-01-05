@@ -38,8 +38,15 @@ RailsAdmin.config do |config|
     end
   end
 
-  config.excluded_models << 'Locating'
-  config.excluded_models << 'Addressing'
+  config.model Phone do
+    object_label_method :description
+  end
+
+  config.model Clergyman do
+    object_label_method :full_name
+  end
+
+  config.excluded_models = %w(Locating Addressing Phoning)
 
   config.actions do
     dashboard                     # mandatory

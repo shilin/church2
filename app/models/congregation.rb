@@ -1,5 +1,6 @@
 class Congregation < ApplicationRecord
   include HavingAddresses
+  include Phonable
 
   has_one :locating, as: :locatable, dependent: :destroy
   has_one :location, through: :locating
