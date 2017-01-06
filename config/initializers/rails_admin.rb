@@ -46,7 +46,7 @@ RailsAdmin.config do |config|
     object_label_method :full_name
   end
 
-  config.excluded_models = %w(Locating Addressing Phoning)
+  config.excluded_models = %w(Locating Addressing Phoning Tagging)
 
   config.actions do
     dashboard                     # mandatory

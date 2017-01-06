@@ -1,6 +1,7 @@
 class NewsItem < ApplicationRecord
   include ZoomField
   include Locatable
+  include Taggable
 
   scope :approved, -> { where(approved: true) }
   scope :newest_first, -> { order(created_at: 'DESC') }
