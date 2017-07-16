@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170105065057) do
+ActiveRecord::Schema.define(version: 20170713085244) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,15 @@ ActiveRecord::Schema.define(version: 20170105065057) do
     t.index ["address_id"], name: "index_addressings_on_address_id", using: :btree
     t.index ["addressable_type", "addressable_id", "address_id"], name: "by_addressable_address", unique: true, using: :btree
     t.index ["addressable_type", "addressable_id"], name: "index_addressings_on_addressable_type_and_addressable_id", using: :btree
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "name"
+    t.string   "color"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["color"], name: "index_categories_on_color", unique: true, using: :btree
+    t.index ["name"], name: "index_categories_on_name", unique: true, using: :btree
   end
 
   create_table "clergymen", force: :cascade do |t|
@@ -113,6 +122,35 @@ ActiveRecord::Schema.define(version: 20170105065057) do
     t.index ["phone_id"], name: "index_phonings_on_phone_id", using: :btree
   end
 
+  create_table "qnas", force: :cascade do |t|
+    t.string   "name"
+    t.text     "question"
+    t.text     "answer"
+    t.boolean  "approved",   default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.index ["approved"], name: "index_qnas_on_approved", using: :btree
+  end
+
+  create_table "taggings", force: :cascade do |t|
+    t.string   "taggable_type"
+    t.integer  "taggable_id"
+    t.integer  "tag_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["tag_id"], name: "index_taggings_on_tag_id", using: :btree
+    t.index ["taggable_type", "taggable_id", "tag_id"], name: "by_taggable_tag", unique: true, using: :btree
+    t.index ["taggable_type", "taggable_id"], name: "index_taggings_on_taggable_type_and_taggable_id", using: :btree
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "category_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["category_id"], name: "index_tags_on_category_id", using: :btree
+  end
+
   create_table "users", force: :cascade do |t|
     t.boolean  "admin",                  default: false, null: false
     t.string   "email",                  default: "",    null: false
@@ -142,4 +180,6 @@ ActiveRecord::Schema.define(version: 20170105065057) do
   add_foreign_key "addressings", "addresses"
   add_foreign_key "locatings", "locations"
   add_foreign_key "phonings", "phones"
+  add_foreign_key "taggings", "tags"
+  add_foreign_key "tags", "categories"
 end

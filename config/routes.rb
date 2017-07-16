@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   resources :news_items, only: [:index, :show]
   resources :congregations, only: [:index, :show]
   resources :clergymen, only: [:index, :show]
+  resources :qnas, only: [:index, :show, :create]
 end
