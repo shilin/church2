@@ -2,3 +2,15 @@ div#qnas
   h2
     |ВОПРОС-ОТВЕТ
   = render @qnas
+  #ask-question
+    = form_for Qna.new, remote: true, format: :json do |f|
+      .field
+        = f.label :name, "Ваше имя"
+        = f.text_field :name
+
+      .field
+        = f.label :question, 'Вопрос'
+        = f.text_area :question
+
+      = f.submit 'Задать вопрос'
+

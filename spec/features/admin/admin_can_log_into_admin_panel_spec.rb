@@ -17,6 +17,7 @@ feature 'admin can log in into rails_admin panel', '
 
   scenario 'admin tries to log into admin panel', js: true do
     sign_in(admin)
+    sleep 4
     expect(current_path).to eq '/admin/'
     expect(page).to have_content 'Site Administration'
     expect(page).to have_content 'Log out'
@@ -24,6 +25,7 @@ feature 'admin can log in into rails_admin panel', '
 
   scenario 'a regular registered user tries to log in into admin panel', js: true do
     sign_in(user)
+    sleep 3
     expect(page).to have_content 'You are not admin'
     expect(current_path).to eq root_path
   end

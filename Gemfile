@@ -47,9 +47,12 @@ gem 'responders'
 gem 'whenever'
 gem 'rails_admin'
 gem 'dotenv-rails'
-
+gem 'active_model_serializers'
 gem 'unicorn'
+gem 'oj'
+gem 'oj_mimic_json'
 
+gem 'sprockets-es6'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -59,6 +62,9 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'capybara-webkit'
   gem 'database_cleaner'
+  gem 'selenium-webdriver'
+
+  # gem 'geckodriver'
 end
 
 group :development do
@@ -83,6 +89,7 @@ group :test do
   gem 'shoulda-matchers'
   gem 'capybara'
   gem 'launchy'
+  gem 'poltergeist'
 end
 
 

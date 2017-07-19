@@ -1,6 +1,13 @@
 require_relative '../rails_helper'
 
-Capybara.javascript_driver = :webkit
+# require 'capybara/poltergeist'
+# Capybara.register_driver :poltergeist_debug do |app|
+#   Capybara::Poltergeist::Driver.new(app, :inspector => true)
+# end
+# Capybara.javascript_driver = :webkit
+
+Capybara.javascript_driver = :selenium
+# Capybara.javascript_driver = :poltergeist_debug
 
 Capybara::Webkit.configure(&:block_unknown_urls)
 
