@@ -1,8 +1,13 @@
 const binding = () => {
-  $('form.new_qna').on(
+  $('form.new_qna')
+  .on(
     'ajax:success',
     (e, data, status, xhr) => { render_success(e, data, status, xhr) }
-  );
+  )
+  .on('ajax:error',
+      (e, xhr, status, error) => { render_error(e, xhr, status, error) }
+     )
+      ;
 };
 
 const render_success = (e, data, status, xhr) => {
@@ -12,15 +17,17 @@ const render_success = (e, data, status, xhr) => {
     $('#flash').html(response.message);
     // console.log(`${id} + ${question}`);
 };
-/*
+
 const render_error = (e, xhr, status, error) => {
-    $('#flash').html('')
-    errors = $.parseJSON(xhr.responseText)
-    $.each errors, (index, value) ->
-      $('#flash').append(value + "</br>")
-      console.log(value)
+  $('#flash').html('');
+  let errors = $.parseJSON(xhr.responseText).errors;
+  $.each(errors, (item) => {
+    errors[item].forEach( (errorMessage) => {
+      $('#flash').append(`${item}:  ${errorMessage} <br>`);
+    });
+  }
+        );
 };
-*/
 
 $(document).ready(binding); // "вешаем" функцию binding на событие document.ready
 

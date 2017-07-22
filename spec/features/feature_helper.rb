@@ -7,6 +7,8 @@ require_relative '../rails_helper'
 # Capybara.javascript_driver = :webkit
 
 Capybara.javascript_driver = :selenium
+# selenium driver for es6 compatibility
+
 # Capybara.javascript_driver = :poltergeist_debug
 
 Capybara::Webkit.configure(&:block_unknown_urls)

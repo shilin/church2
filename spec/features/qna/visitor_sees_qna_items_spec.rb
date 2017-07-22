@@ -13,13 +13,9 @@ feature 'User can see qna', '
     visit qnas_path
 
     within '#qnas' do
-      expect(page).to have_content('Asker1')
-      expect(page).to have_content('Question1')
-      expect(page).to have_content('Answer1')
-
-      expect(page).to have_content('Asker2')
-      expect(page).to have_content('Question2')
-      expect(page).to have_content('Answer2')
+      %w(Asker Question Answer).each do |text|
+        expect(page).to have_content(text, count: 2)
+      end
     end
   end
 
